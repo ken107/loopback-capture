@@ -3,9 +3,10 @@
 
 class MyAudioSink {
 private:
-	int bytesPerFrame;
+	WORD bytesPerFrame;
+	BYTE silence[16000] = {};
 
 public:
 	HRESULT SetFormat(WAVEFORMATEX *pwfx);
-	HRESULT CopyData(BYTE *pData, UINT32 numFramesAvailable, BOOL *bDone);
+	HRESULT CopyData(BYTE *pData, UINT32 numFramesAvailable);
 };

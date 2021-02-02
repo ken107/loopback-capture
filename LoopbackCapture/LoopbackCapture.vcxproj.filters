@@ -21,9 +21,15 @@
     <ClCompile Include="MyAudioSink.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Capture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyAudioSink.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Capture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

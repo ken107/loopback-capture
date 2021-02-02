@@ -151,10 +151,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Capture.cpp" />
     <ClCompile Include="LoopbackCapture.cpp" />
     <ClCompile Include="MyAudioSink.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Capture.h" />
     <ClInclude Include="MyAudioSink.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
