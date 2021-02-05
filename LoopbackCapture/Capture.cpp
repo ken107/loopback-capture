@@ -112,7 +112,7 @@ HRESULT RecordAudioStream(MyAudioSink *pMySink, BOOL &bDone)
 		hr = pCaptureClient->GetNextPacketSize(&packetLength);
 		EXIT_ON_ERROR(hr)
 
-		while (packetLength != 0)
+		while (bDone == FALSE && packetLength != 0)
 		{
 			// Get the available data in the shared buffer.
 			hr = pCaptureClient->GetBuffer(&pData, &numFramesAvailable, &flags, NULL, NULL);
@@ -133,6 +133,9 @@ HRESULT RecordAudioStream(MyAudioSink *pMySink, BOOL &bDone)
 			hr = pCaptureClient->GetNextPacketSize(&packetLength);
 			EXIT_ON_ERROR(hr)
 		}
+
+		hr = pMySink->Flush();
+		EXIT_ON_ERROR(hr)
 	}
 
 	hr = pAudioClient->Stop();  // Stop recording.

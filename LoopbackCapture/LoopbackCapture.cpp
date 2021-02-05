@@ -16,13 +16,11 @@ void adminThread(BOOL &bDone) {
 int main(int argc, char *argv[])
 {
 	HRESULT hr;
-	WAVEFORMATEX wfx;
-	MyAudioSink sink;
-
 	CoInitialize(nullptr);
 
 	if (argc == 2) {
 		if (strcmp(argv[1], "get-mix-format") == 0) {
+			WAVEFORMATEX wfx;
 			hr = GetMixFormat(wfx);
 			if FAILED(hr) goto Exit;
 
@@ -31,6 +29,7 @@ int main(int argc, char *argv[])
 		else if (strcmp(argv[1], "record") == 0) {
 			_setmode(_fileno(stdout), O_BINARY);
 
+			MyAudioSink sink(stdout);
 			BOOL bDone = FALSE;
 			std::thread admin(adminThread, std::ref(bDone));
 			hr = RecordAudioStream(&sink, bDone);
